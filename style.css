@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.wrap {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.panel {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#rec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+button:active, button:focus {
+    outline: none;
+}
+
+button svg {
+    fill: #fff;
+}
+
+.transcription-button {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.text-button, .edit-button, .delete-button, .predefined-text-button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.text-button {
+    flex: 1;
+    text-align: left;
+}
+
+.shortcut {
+    background: #e0e0e0;
+    color: #000;
+    border-radius: 3px;
+    padding: 2px 5px;
+    margin-left: 10px;
+}
+
+#voiceForm {
+    display: flex;
+    align-items: center;
+}
+
+#language, #voice {
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+#toggle-command-mode.active {
+    background: #28a745;
+}
