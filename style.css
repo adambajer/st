@@ -35,7 +35,12 @@ button {
     border-radius: 5px;
     margin: 0 5px;
 }
-
+#start-command-mode {
+background:blue;
+}
+#start-capture-mode {
+    background:red;
+}
 button:active, button:focus {
     outline: none;
 }
@@ -43,7 +48,9 @@ button:active, button:focus {
 button svg {
     fill: #fff;
 }
-
+button svg path {
+    fill:white;
+}
 .transcription-button {
     display: flex;
     align-items: center;
