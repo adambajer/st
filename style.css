@@ -50,6 +50,9 @@ button:active, button:focus {
 
 button svg {
     fill: #fff;
+    display:block;
+    width:40px;
+    height:40px;
 }
 button svg path {
     fill:white;
