@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSA</title>
+    <link crossorigin="anonymous" rel="icon" href="fav.svg" sizes="32x32">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="panel">
+            <div id="rec">
+                <button id="start-recording">
+                    <!-- SVG Icon here -->
+                    <svg version="1.1" viewBox="0 0 210 210" xmlns="http://www.w3.org/2000/svg">
+                        <!-- SVG Content here -->
+                    </svg>
+                </button>
+            </div>
+            <div id="rec">
+                <button id="start-sound-capture">
+                    <!-- SVG Icon here -->
+                    <svg version="1.1" viewBox="0 0 210 210" xmlns="http://www.w3.org/2000/svg">
+                        <!-- SVG Content here -->
+                    </svg>
+                </button>
+            </div>
+            <div id="rec">
+                <form id="voiceForm">
+                    <select id="language"></select>
+                    <select id="voice"></select>
+                    <button type="submit">Speak</button>
+                </form>
+            </div>
+            <div id="rec">
+                <button id="toggle-command-mode">Toggle Command Mode</button>
+            </div>
+        </div>
+        <br>
+        <div id="transcriptions" class="grid-container"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
