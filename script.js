@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const readTextAloud = (text) => {
         const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'cs-CZ'; // Set the language to Czech
         utterance.rate = 1;
         synth.speak(utterance);
     };
