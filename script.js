@@ -19,21 +19,29 @@ document.addEventListener("DOMContentLoaded", () => {
         const buttonWrapper = document.createElement("div");
         buttonWrapper.className = "transcription-button";
 
-        const button = document.createElement("button");
-        button.className = "text-button";
-        button.textContent = `${trigger} -> ${message}`;
-        button.addEventListener("click", () => {
-            readTextAloud(message);
-        });
+        const triggerInput = document.createElement("input");
+        triggerInput.type = "text";
+        triggerInput.value = trigger;
+        triggerInput.className = "text-input";
+        triggerInput.disabled = true;
+
+        const messageInput = document.createElement("input");
+        messageInput.type = "text";
+        messageInput.value = message;
+        messageInput.className = "text-input";
+        messageInput.disabled = true;
 
         const editButton = document.createElement("button");
         editButton.className = "edit-button";
         editButton.innerHTML = "✏️";
         editButton.addEventListener("click", () => {
-            const newMessage = prompt("Edit message:", message);
-            if (newMessage) {
-                button.textContent = `${trigger} -> ${newMessage}`;
-                updateTrigger(trigger, newMessage);
+            triggerInput.disabled = !triggerInput.disabled;
+            messageInput.disabled = !messageInput.disabled;
+            if (!triggerInput.disabled) {
+                editButton.innerHTML = "✔️";
+            } else {
+                editButton.innerHTML = "✏️";
+                updateTrigger(trigger, triggerInput.value, messageInput.value);
             }
         });
 
@@ -46,7 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         buttonWrapper.appendChild(deleteButton);
-        buttonWrapper.appendChild(button);
+        buttonWrapper.appendChild(triggerInput);
+        buttonWrapper.appendChild(messageInput);
         buttonWrapper.appendChild(editButton);
         transcriptionsContainer.appendChild(buttonWrapper);
     };
@@ -56,8 +65,11 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("voiceTriggers", JSON.stringify(voiceTriggers));
     };
 
-    const updateTrigger = (trigger, newMessage) => {
-        voiceTriggers[trigger] = newMessage;
+    const updateTrigger = (oldTrigger, newTrigger, newMessage) => {
+        if (oldTrigger !== newTrigger) {
+            delete voiceTriggers[oldTrigger];
+        }
+        voiceTriggers[newTrigger] = newMessage;
         localStorage.setItem("voiceTriggers", JSON.stringify(voiceTriggers));
     };
 
