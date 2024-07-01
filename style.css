@@ -35,6 +35,9 @@ button {
     border-radius: 5px;
     margin: 0 5px;
 }
+input {
+padding:15px;
+}
 #start-command-mode {
 background:blue;
 }
