@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const startRecordingButton = document.getElementById("start-recording");
+    const startCommandModeButton = document.getElementById("start-command-mode");
+    const startCaptureModeButton = document.getElementById("start-capture-mode");
     const transcriptionsContainer = document.getElementById("transcriptions");
-    const toggleCommandModeButton = document.getElementById("toggle-command-mode");
     const synth = window.speechSynthesis;
     let isRecording = false;
-    let isCommandMode = false;
+    let isCaptureMode = false;
     let voiceTriggers = {}; // Store voice triggers and their messages
 
     const loadTriggers = () => {
@@ -84,16 +84,11 @@ document.addEventListener("DOMContentLoaded", () => {
         synth.speak(utterance);
     };
 
-    toggleCommandModeButton.addEventListener("click", () => {
-        isCommandMode = !isCommandMode;
-        toggleCommandModeButton.classList.toggle('active');
-    });
-
     if (annyang) {
         const commands = {
             '*trigger': (trigger) => {
-                if (isCommandMode) {
-                    const message = prompt(`Enter message for trigger "${trigger}":`);
+                if (isCaptureMode) {
+                    const message = prompt(`Zadejte zprávu pro příkaz "${trigger}":`);
                     if (message) {
                         createTriggerButton(trigger, message);
                         saveTrigger(trigger, message);
@@ -101,44 +96,62 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else if (voiceTriggers[trigger]) {
                     readTextAloud(voiceTriggers[trigger]);
                 } else {
-                    alert(`No message found for trigger: "${trigger}"`);
+                    alert(`Nebyla nalezena zpráva pro příkaz: "${trigger}"`);
                 }
             }
         };
 
         annyang.addCommands(commands);
-        annyang.setLanguage('en-US');
+        annyang.setLanguage('cs-CZ');
 
-        const toggleRecording = () => {
+        const toggleRecording = (mode) => {
             if (isRecording) {
                 annyang.abort();
-                startRecordingButton.classList.remove('active');
+                mode.classList.remove('active');
             } else {
                 annyang.start();
-                startRecordingButton.classList.add('active');
+                mode.classList.add('active');
             }
             isRecording = !isRecording;
         };
 
-        startRecordingButton.addEventListener("click", toggleRecording);
+        startCommandModeButton.addEventListener("click", () => {
+            isCaptureMode = false;
+            toggleRecording(startCommandModeButton);
+            startCaptureModeButton.classList.remove('active');
+        });
+
+        startCaptureModeButton.addEventListener("click", () => {
+            isCaptureMode = true;
+            toggleRecording(startCaptureModeButton);
+            startCommandModeButton.classList.remove('active');
+        });
 
         document.addEventListener("keydown", (event) => {
             if (event.key === "Control") {
-                toggleRecording();
+                if (isCaptureMode) {
+                    toggleRecording(startCaptureModeButton);
+                } else {
+                    toggleRecording(startCommandModeButton);
+                }
             }
         });
 
         annyang.addCallback('end', () => {
             if (isRecording) {
-                toggleRecording();
+                if (isCaptureMode) {
+                    toggleRecording(startCaptureModeButton);
+                } else {
+                    toggleRecording(startCommandModeButton);
+                }
             }
         });
 
         annyang.addCallback('error', (event) => {
-            console.error("Speech recognition error", event.error);
+            console.error("Chyba rozpoznávání řeči", event.error);
         });
     } else {
-        console.warn("annyang is not available.");
+        console.warn("annyang není k dispozici.");
     }
 
     loadTriggers();
