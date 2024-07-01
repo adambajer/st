@@ -50,7 +50,7 @@ button svg {
     margin-bottom: 10px;
 }
 
-.text-button, .edit-button, .delete-button, .predefined-text-button {
+.text-button, .edit-button, .delete-button {
     background: #007bff;
     color: #fff;
     border: none;
@@ -63,30 +63,6 @@ button svg {
 .text-button {
     flex: 1;
     text-align: left;
-}
-
-.shortcut {
-    background: #e0e0e0;
-    color: #000;
-    border-radius: 3px;
-    padding: 2px 5px;
-    margin-left: 10px;
-}
-
-#voiceForm {
-    display: flex;
-    align-items: center;
-}
-
-#language, #voice {
-    padding: 5px;
-    margin-right: 10px;
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
 }
 
 #toggle-command-mode.active {
