@@ -70,7 +70,7 @@ button svg path {
     display:inline-flex;
 }
 
-button {
+button,.text-input {
  display:inline-flex;
     padding: 10px;
     border: 1px solid #ddd;
