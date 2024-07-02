@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
             '*trigger': (trigger) => {
                 if (isCaptureMode) {
                     annyang.pause(); // Pause recognition to prompt user
-                    speakText(`Řekněte zprávu pro příkaz "${trigger}"`);
+                    
                     startVoiceInput((message) => {
                         if (message) {
                             createTriggerButton(trigger, message);
