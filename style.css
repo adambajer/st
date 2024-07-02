@@ -1,1 +1,270 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
 
+.wrap {
+    padding: 0px;
+}
+
+button {
+    display: inline-block;
+
+    font-size: 16px;
+    border: none;
+    border-radius: 0px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative;
+}
+
+button:hover {
+    color: red;
+}
+
+.grid-container {
+    display: flex;
+    justify-items: stretch;
+    flex-direction: row;
+    width: auto; 
+    justify-content: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
+    border-top-left-radius: 0px;
+}
+
+.transcription-button {
+
+    position: relative;
+    margin: 5px;
+    height: 35px;
+    border: 0px solid #ccc;
+    border-radius: 0px;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: space-around;
+    justify-content: center;
+    align-items: stretch;
+
+}
+
+.text-button {
+    border: 0px solid #ccc;
+    background-color: #ffffff;      border-top: 1px solid #ccc;border-bottom: 1px solid #ccc;
+}
+
+.edit-button {
+    border: 1px solid #ccc;
+    background-color: transparent;
+    cursor: pointer;
+    color: #333;
+    font-size: 16px;
+    padding: 2px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;      background: #eee;
+}
+
+.delete-button {
+    border: 1px solid #ccc; 
+    background-color: transparent;
+    cursor: pointer;
+    color: #333;
+    font-size: 16px;
+    padding: 2px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;      background: #eee;
+}
+
+#start-command-mode,
+#start-capture-mde  {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 100%;
+    transform: translateY(1px);
+    font-size: 8px;
+}
+
+#start-command-mode.active,
+#start-capture-mde .active {
+    border: 1px solid red;
+    box-shadow: 0px 0px 7px 0px rgba(255, 0, 0, 0.3);
+    padding: 10px;
+}
+
+#start-command-mode.active,
+#start-capture-mde .active {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0px 0px 20px red;
+    }
+
+    50% {
+        box-shadow: 0px 0px 40px red;
+    }
+
+    100% {
+        box-shadow: 0px 0px 20px red;
+    }
+}
+
+.shortcut {
+    right: -10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    /* padding: 2px 5px; */
+    font-size: 12px;
+    /* color: black; */
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    margin: 2px;
+    margin-left: 5px;
+    padding: 5px;
+    padding: 5px !important;
+    font-size: 17px;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 12px;
+    visibility: hidden;
+    z-index: 1;
+    top: -25px;
+}
+
+.transcription-button:hover .tooltip {
+    visibility: visible;
+}
+
+button.active {
+ }
+
+#start-command-mode,
+#start-capture-mde  {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 20px;
+    width: 100%;
+    transform: translateY(1px);
+}
+
+#start-command-mode svg path {
+    fill: rgb(164, 164, 164);
+    stroke: transparent;
+}
+
+#start-capture-mde  svg path {
+    fill: rgb(164, 164, 164);
+    stroke: transparent;
+}
+
+#start-command-mode.active svg path {
+    fill: red;
+}
+
+#start-capture-mde .active svg path {
+    fill: blue;
+}
+
+#start-command-mode.active {
+    border: 1px solid red;
+    box-shadow: 0px 0px 7px 0px rgba(255, 0, 0, 0.3);
+    padding: 10px;
+}
+
+#start-capture-mde .active {
+    border: 1px solid blue;
+    box-shadow: 0px 0px 7px 0px rgba(0, 0, 255, 0.3);
+    padding: 10px;
+}
+
+#start-command-mode.active {
+    animation: pulse 1s infinite;
+}
+
+#start-capture-mde .active {
+    animation: pulseb 1s infinite;
+}
+
+#start-command-mode svg,
+#start-capture-mde  svg {
+    width: 60px;
+    height: 60px;
+    display: block;
+}
+
+#rec {
+  
+    margin: 20px;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+    justify-content: space-around;
+}
+
+
+
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0px 0px 20px red;
+    }
+
+    50% {
+        box-shadow: 0px 0px 40px red;
+    }
+
+    100% {
+        box-shadow: 0px 0px 20px red;
+    }
+}
+
+@keyframes pulseb {
+    0% {
+        box-shadow: 0px 0px 20px blue;
+    }
+
+    50% {
+        box-shadow: 0px 0px 40px blue;
+    }
+
+    100% {
+        box-shadow: 0px 0px 20px blue;
+    }
+}
+.panel {
+background-color: #eee;
+padding: 20px auto;}
+.transcription-button{
+    border-radius: 5px;
+}
+.transcription-button.active {
+    border: 1px solid red;
+    animation: borderPulse 2s infinite;
+}
+
+@keyframes borderPulse {
+    0% {
+        border-color: red;
+    }
+    100% {
+        border-color: #ccc;
+    }
+}
