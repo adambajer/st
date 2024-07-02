@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let isCaptureMode = false;
     let voiceTriggers = {}; // Store voice triggers and their messages
 
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition || window.oSpeechRecognition;
+
     const loadTriggers = () => {
         const storedTriggers = JSON.parse(localStorage.getItem("voiceTriggers")) || {};
         voiceTriggers = storedTriggers;
@@ -65,7 +67,13 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const startVoiceInput = (callback) => {
-        const recognition = new window.SpeechRecognition();
+        if (!SpeechRecognition) {
+            speakText("Váš prohlížeč nepodporuje rozpoznávání řeči.");
+            console.warn("Speech recognition is not supported by this browser.");
+            return;
+        }
+
+        const recognition = new SpeechRecognition();
         recognition.lang = 'cs-CZ';
         recognition.interimResults = false;
         recognition.maxAlternatives = 1;
@@ -81,6 +89,17 @@ document.addEventListener("DOMContentLoaded", () => {
             speakText("Chyba rozpoznávání řeči");
             console.error("Chyba rozpoznávání řeči", event.error);
         };
+
+        recognition.onend = () => {
+            console.log("Speech recognition service disconnected");
+        };
+    };
+
+    const readTextAloud = (text) => {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'cs-CZ'; // Set the language to Czech
+        utterance.rate = 1;
+        synth.speak(utterance);
     };
 
     if (annyang) {
@@ -88,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
             '*trigger': (trigger) => {
                 if (isCaptureMode) {
                     annyang.pause(); // Pause recognition to prompt user
-                    
+                    speakText(`Řekněte zprávu pro příkaz "${trigger}"`);
                     startVoiceInput((message) => {
                         if (message) {
                             createTriggerButton(trigger, message);
@@ -111,11 +130,11 @@ document.addEventListener("DOMContentLoaded", () => {
             if (isRecording) {
                 annyang.abort();
                 mode.classList.remove('active');
-                 
+                speakText("Nahrávání zastaveno");
             } else {
                 annyang.start();
                 mode.classList.add('active');
-                
+                speakText("Nahrávání zahájeno");
             }
             isRecording = !isRecording;
         };
