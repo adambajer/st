@@ -24,8 +24,7 @@ width:50%;
 .capture {
     width:50%;
     text-align:center;
-    background:red;
-}
+ }
 .panel {
      display: flex;
     flex-wrap: wrap;
@@ -43,7 +42,7 @@ width:50%;
 }
 
 #start-capture-mode {
-    background: red;
+   
 }
 
 button:active, button:focus {
@@ -58,7 +57,7 @@ button svg {
 }
 
 button svg path {
-    fill: white;
+    
 }
 
 .transcription-button {
@@ -87,10 +86,13 @@ button,.text-input {
 button {border:0px solid black;}
 
 
-#start-command-mode.active { 
+#start-command-mode.activ { 
 }
 #start-command-mode.active {
     animation: borderPulses 2s infinite;
+}
+#start-capture-mode path {
+    fill:red;
 }
  #start-capture-mode.active {   
      animation: borderPulsec 2s infinite;
