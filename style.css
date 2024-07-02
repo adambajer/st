@@ -32,7 +32,9 @@ width:50%;
     margin-bottom: 0px;
     justify-content: flex-start;
 }
- 
+ input.text-input {
+    width: 44%;
+}
 
  
 
