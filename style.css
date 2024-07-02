@@ -1,7 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+     color: #333;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,43 +8,8 @@ body {
 .wrap {
     margin: 0px auto;
     background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: block;
-    width: 100vw;
-}
-.comm{
-     text-align:center;
-    
-    
-}
-.capture {
-     text-align:center;
- }
-.panel {
-     display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 0px;
-    justify-content: flex-start;
-}
- 
-button:active, button:focus {
-    outline: none;
-}
-
-button svg {
-    
-    display: block;
-    width: 40px;
-    height: 40px;
-}
- 
-
-.transcription-button {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0px;
-    flex-wrap: wrap;
-}
+     width: 100vw;
+} 
 
 .edit-button, .delete-button {
   
@@ -65,20 +29,14 @@ button,.text-input {
 }
 button {border:0px solid black;}
 
-
-button#start-command-mode svg path { 
-    fill:blue;
+ 
+#start-command-mode svg path {
+    fill: rgb(164, 164, 164);
+    stroke: transparent;
 }
 #start-command-mode.active {
     animation: borderPulses 2s infinite;
-}
-#start-capture-mode {
-    border:1px solid red;
-
-}
-button#start-capture-mode svg path 
-    fill:red;
-}
+} 
  #start-capture-mode.active {   
      animation: borderPulsec 2s infinite;
 
