@@ -93,7 +93,8 @@ button svg path {
     border: 1px solid #ddd;
     border-radius: 5px;
     background: #f9f9f9;
-    box-sizing: border-box;
+    box-sizing: border-box;    background: white;
+    margin: 10px;
 }
 
 .text-input:disabled {
