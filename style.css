@@ -81,10 +81,13 @@ button svg path {
     cursor: pointer;
     border-radius: 5px;
     margin-right: 5px;
+    width:30px;
+    height:30px;
+    display:inline-flex;
 }
 
 .text-input {
-    flex: 1 1 100%;
+ display:inline-flex;
     padding: 10px;
     margin: 5px 0;
     border: 1px solid #ddd;
