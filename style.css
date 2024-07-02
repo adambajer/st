@@ -72,7 +72,7 @@ button,.text-input {
     box-sizing: border-box;    background: white;
     margin: 0px;
 }
-
+button {border:0px solid black;}
 
 
 #start-command-mode.active { 
