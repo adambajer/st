@@ -8,22 +8,17 @@ body {
 }
 
 .wrap {
-    width: 90%;
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
+    
     background: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .comm{
-width:50%;
-    text-align:center;
+     text-align:center;
     
     
 }
 .capture {
-    width:50%;
-    text-align:center;
+     text-align:center;
  }
 .panel {
      display: flex;
@@ -32,8 +27,7 @@ width:50%;
     justify-content: flex-start;
 }
  input.text-input {
-    width: 44%;
-}
+ }
 
  
 
