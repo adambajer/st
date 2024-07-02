@@ -31,38 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
         messageInput.className = "text-input";
         messageInput.disabled = true;
 
-        const editButton = document.createElement("button");
-        editButton.className = "edit-button";
-        editButton.innerHTML = "✏️";
-        editButton.addEventListener("click", () => {
-            triggerInput.disabled = !triggerInput.disabled;
-            messageInput.disabled = !messageInput.disabled;
-            if (!triggerInput.disabled) {
-                editButton.innerHTML = "✔️";
-            } else {
-                editButton.innerHTML = "✏️";
-                updateTrigger(trigger, triggerInput.value, messageInput.value);
-            }
-        });
-
-        const deleteButton = document.createElement("button");
-        deleteButton.className = "delete-button";
-        deleteButton.innerHTML = "🗑️";
-        deleteButton.addEventListener("click", () => {
-            buttonWrapper.remove();
-            deleteTrigger(trigger);
-        });
-
-        buttonWrapper.appendChild(deleteButton);
         buttonWrapper.appendChild(triggerInput);
         buttonWrapper.appendChild(messageInput);
-        buttonWrapper.appendChild(editButton);
         transcriptionsContainer.appendChild(buttonWrapper);
     };
 
     const saveTrigger = (trigger, message) => {
         voiceTriggers[trigger] = message;
         localStorage.setItem("voiceTriggers", JSON.stringify(voiceTriggers));
+        speakText(`Trigger "${trigger}" saved with message "${message}"`);
     };
 
     const updateTrigger = (oldTrigger, newTrigger, newMessage) => {
@@ -71,14 +48,16 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         voiceTriggers[newTrigger] = newMessage;
         localStorage.setItem("voiceTriggers", JSON.stringify(voiceTriggers));
+        speakText(`Trigger "${oldTrigger}" updated to "${newTrigger}" with message "${newMessage}"`);
     };
 
     const deleteTrigger = (trigger) => {
         delete voiceTriggers[trigger];
         localStorage.setItem("voiceTriggers", JSON.stringify(voiceTriggers));
+        speakText(`Trigger "${trigger}" deleted`);
     };
 
-    const readTextAloud = (text) => {
+    const speakText = (text) => {
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = 'cs-CZ'; // Set the language to Czech
         utterance.rate = 1;
@@ -99,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         recognition.onerror = (event) => {
+            speakText("Chyba rozpoznávání řeči");
             console.error("Chyba rozpoznávání řeči", event.error);
         };
     };
@@ -108,6 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
             '*trigger': (trigger) => {
                 if (isCaptureMode) {
                     annyang.pause(); // Pause recognition to prompt user
+                    speakText(`Řekněte zprávu pro příkaz "${trigger}"`);
                     startVoiceInput((message) => {
                         if (message) {
                             createTriggerButton(trigger, message);
@@ -118,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else if (voiceTriggers[trigger]) {
                     readTextAloud(voiceTriggers[trigger]);
                 } else {
-                    alert(`Nebyla nalezena zpráva pro příkaz: "${trigger}"`);
+                    speakText(`Nebyla nalezena zpráva pro příkaz: "${trigger}"`);
                 }
             }
         };
@@ -130,9 +111,11 @@ document.addEventListener("DOMContentLoaded", () => {
             if (isRecording) {
                 annyang.abort();
                 mode.classList.remove('active');
+                speakText("Nahrávání zastaveno");
             } else {
                 annyang.start();
                 mode.classList.add('active');
+                speakText("Nahrávání zahájeno");
             }
             isRecording = !isRecording;
         };
@@ -170,9 +153,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         annyang.addCallback('error', (event) => {
+            speakText("Chyba rozpoznávání řeči");
             console.error("Chyba rozpoznávání řeči", event.error);
         });
     } else {
+        speakText("annyang není k dispozici.");
         console.warn("annyang není k dispozici.");
     }
 
