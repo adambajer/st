@@ -38,6 +38,7 @@ body {
 
 #start-capture-mode {
    border:1px solid blue;
+    
 }
 
 button:active, button:focus {
@@ -87,8 +88,11 @@ button {border:0px solid black;}
 #start-command-mode.active {
     animation: borderPulses 2s infinite;
 }
+#start-capture-mode {
+    border:1px solid red;
+
+}
 #start-capture-mode path 
-border:1px solid red;
     fill:red;
 }
  #start-capture-mode.active {   
