@@ -89,12 +89,11 @@ button svg path {
 .text-input {
  display:inline-flex;
     padding: 10px;
-    margin: 5px 0;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 0px;
     background: #f9f9f9;
     box-sizing: border-box;    background: white;
-    margin: 10px;
+    margin: 0px;
 }
 
 .text-input:disabled {
@@ -108,7 +107,7 @@ button svg path {
 .grid-container {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 0px;
 }
 
 /* Media Queries */
