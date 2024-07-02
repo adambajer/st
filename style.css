@@ -2,6 +2,9 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .wrap {
@@ -15,6 +18,7 @@ body {
 
 .panel {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 20px;
 }
@@ -23,59 +27,70 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 1 1 45%;
+    margin: 5px 0;
 }
 
 button {
-     color: #fff;
+    color: #fff;
     border: none;
     padding: 10px 15px;
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
     margin: 0 5px;
+    width: 100%;
+    max-width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-input {
-padding:15px;
-}
+
 #start-command-mode {
-background:blue;
+    background: blue;
 }
+
 #start-capture-mode {
-    background:red;
+    background: red;
 }
+
 button:active, button:focus {
     outline: none;
 }
 
 button svg {
     fill: #fff;
-    display:block;
-    width:40px;
-    height:40px;
+    display: block;
+    width: 40px;
+    height: 40px;
 }
+
 button svg path {
-    fill:white;
+    fill: white;
 }
+
 .transcription-button {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    flex-wrap: wrap;
 }
 
-.text-button, .edit-button, .delete-button {
-     padding: 10px;
+.edit-button, .delete-button {
+    padding: 10px;
     cursor: pointer;
     border-radius: 5px;
     margin-right: 5px;
 }
 
 .text-input {
-    flex: 1;
+    flex: 1 1 100%;
     padding: 10px;
-    margin-right: 5px;
+    margin: 5px 0;
     border: 1px solid #ddd;
     border-radius: 5px;
     background: #f9f9f9;
+    box-sizing: border-box;
 }
 
 .text-input:disabled {
@@ -90,4 +105,31 @@ button svg path {
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+    .wrap {
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+        box-shadow: none;
+    }
+
+    .panel {
+        flex-direction: column;
+    }
+
+    button {
+        max-width: 100%;
+        margin: 5px 0;
+    }
+
+    .transcription-button {
+        flex-direction: column;
+    }
+
+    .text-input {
+        margin: 5px 0;
+    }
 }
