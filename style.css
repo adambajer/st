@@ -18,7 +18,7 @@ body {
 .comm{
 width:50%;
     text-align:center;
-    background:blue;
+    
     
 }
 .capture {
@@ -38,7 +38,7 @@ width:50%;
  
 
 #start-command-mode {
-    background: blue;
+    
 }
 
 #start-capture-mode {
@@ -50,7 +50,7 @@ button:active, button:focus {
 }
 
 button svg {
-    fill: #fff;
+    
     display: block;
     width: 40px;
     height: 40px;
@@ -86,7 +86,8 @@ button,.text-input {
 button {border:0px solid black;}
 
 
-#start-command-mode.activ { 
+#start-command-mode path { 
+    fill:blue;
 }
 #start-command-mode.active {
     animation: borderPulses 2s infinite;
