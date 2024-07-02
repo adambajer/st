@@ -6,11 +6,12 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
-
 .wrap {
-    
+    margin: 0px auto;
     background: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: block;
+    width: 100vw;
 }
 .comm{
      text-align:center;
@@ -36,7 +37,7 @@ body {
 }
 
 #start-capture-mode {
-   
+   border:1px solid blue;
 }
 
 button:active, button:focus {
@@ -86,7 +87,8 @@ button {border:0px solid black;}
 #start-command-mode.active {
     animation: borderPulses 2s infinite;
 }
-#start-capture-mode path {
+#start-capture-mode path 
+border:1px solid red;
     fill:red;
 }
  #start-capture-mode.active {   
