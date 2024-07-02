@@ -111,11 +111,11 @@ document.addEventListener("DOMContentLoaded", () => {
             if (isRecording) {
                 annyang.abort();
                 mode.classList.remove('active');
-                speakText("Nahrávání zastaveno");
+                 
             } else {
                 annyang.start();
                 mode.classList.add('active');
-                speakText("Nahrávání zahájeno");
+                
             }
             isRecording = !isRecording;
         };
