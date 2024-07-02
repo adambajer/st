@@ -85,15 +85,36 @@ document.addEventListener("DOMContentLoaded", () => {
         synth.speak(utterance);
     };
 
+    const startVoiceInput = (callback) => {
+        const recognition = new window.SpeechRecognition();
+        recognition.lang = 'cs-CZ';
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+
+        recognition.start();
+
+        recognition.onresult = (event) => {
+            const message = event.results[0][0].transcript;
+            callback(message);
+        };
+
+        recognition.onerror = (event) => {
+            console.error("Chyba rozpoznávání řeči", event.error);
+        };
+    };
+
     if (annyang) {
         const commands = {
             '*trigger': (trigger) => {
                 if (isCaptureMode) {
-                    const message = prompt(`Zadejte zprávu pro příkaz "${trigger}":`);
-                    if (message) {
-                        createTriggerButton(trigger, message);
-                        saveTrigger(trigger, message);
-                    }
+                    annyang.pause(); // Pause recognition to prompt user
+                    startVoiceInput((message) => {
+                        if (message) {
+                            createTriggerButton(trigger, message);
+                            saveTrigger(trigger, message);
+                        }
+                        annyang.resume(); // Resume recognition after input
+                    });
                 } else if (voiceTriggers[trigger]) {
                     readTextAloud(voiceTriggers[trigger]);
                 } else {
