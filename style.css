@@ -81,7 +81,7 @@ button:hover {
 }
 
 #start-command-mode,
-#start-capture-mde  {
+#start-capture-mode  {
     padding: 10px;
     border: 1px solid #ccc;
     background-color: white;
@@ -91,14 +91,14 @@ button:hover {
 }
 
 #start-command-mode.active,
-#start-capture-mde .active {
+#start-capture-mode .active {
     border: 1px solid red;
     box-shadow: 0px 0px 7px 0px rgba(255, 0, 0, 0.3);
     padding: 10px;
 }
 
 #start-command-mode.active,
-#start-capture-mde .active {
+#start-capture-mode .active {
     animation: pulse 1s infinite;
 }
 
@@ -166,7 +166,7 @@ width:60px;height:60px;    transform: translateY(1px);
     stroke: transparent;
 }
 
-#start-capture-mde  svg path {
+#start-capture-mode  svg path {
     fill: rgb(164, 164, 164);
     stroke: transparent;
 }
@@ -175,7 +175,7 @@ width:60px;height:60px;    transform: translateY(1px);
     fill: red;
 }
 
-#start-capture-mde .active svg path {
+#start-capture-mode .active svg path {
     fill: blue;
 }
 
@@ -185,7 +185,7 @@ width:60px;height:60px;    transform: translateY(1px);
     padding: 10px;
 }
 
-#start-capture-mde .active {
+#start-capture-mode .active {
     border: 1px solid blue;
     box-shadow: 0px 0px 7px 0px rgba(0, 0, 255, 0.3);
     padding: 10px;
@@ -195,12 +195,12 @@ width:60px;height:60px;    transform: translateY(1px);
     animation: pulse 1s infinite;
 }
 
-#start-capture-mde .active {
+#start-capture-mode .active {
     animation: pulseb 1s infinite;
 }
 
 #start-command-mode svg,
-#start-capture-mde  svg {
+#start-capture-mode  svg {
     width: 60px;
     height: 60px;
     display: block;
