@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
             '*trigger': (trigger) => {
                 if (isCaptureMode) {
                     annyang.pause(); // Pause recognition to prompt user
-                    speakText(`Řekněte zprávu pro příkaz "${trigger}"`);
+                   
                     startVoiceInput((message) => {
                         if (message) {
                             createTriggerButton(trigger, message);
@@ -130,11 +130,11 @@ document.addEventListener("DOMContentLoaded", () => {
             if (isRecording) {
                 annyang.abort();
                 mode.classList.remove('active');
-                speakText("Nahrávání zastaveno");
+                
             } else {
                 annyang.start();
                 mode.classList.add('active');
-                speakText("Nahrávání zahájeno");
+                
             }
             isRecording = !isRecording;
         };
