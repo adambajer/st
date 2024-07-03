@@ -86,6 +86,8 @@ document.addEventListener("DOMContentLoaded", () => {
             
             const message = event.results[0][0].transcript;
             callback(message);
+                    messageclass.innerHTML = message;
+
         };
 
         recognition.onerror = (event) => {
@@ -94,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         recognition.onend = () => {
+            messageclass.innerHTML = "";
             console.log("Speech recognition service disconnected");
         };
     };
@@ -175,6 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         annyang.addCallback('error', (event) => {
+            messageclass.innerHTML = "Chyba rozpoznávání řeči";
             speakText("Chyba rozpoznávání řeči");
             console.error("Chyba rozpoznávání řeči", event.error);
         });
