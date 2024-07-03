@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    let messageclass = document.querySelector("message");
     const startCommandModeButton = document.getElementById("start-command-mode");
     const startCaptureModeButton = document.getElementById("start-capture-mode");
     const transcriptionsContainer = document.getElementById("transcriptions");
@@ -77,10 +78,12 @@ document.addEventListener("DOMContentLoaded", () => {
         recognition.lang = 'cs-CZ';
         recognition.interimResults = false;
         recognition.maxAlternatives = 1;
-
+        messageclass.innerHTML = "Rozpoznávání hlasu začalo";
         recognition.start();
+        messageclass.innerHTML = "Řekněte příkaz";
 
         recognition.onresult = (event) => {
+            
             const message = event.results[0][0].transcript;
             callback(message);
         };
