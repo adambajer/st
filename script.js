@@ -146,12 +146,14 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         startCommandModeButton.addEventListener("click", () => {
+            messageclass.innerHTML = "";
             isCaptureMode = false;
             toggleRecording(startCommandModeButton);
             startCaptureModeButton.classList.remove('active');
         });
 
         startCaptureModeButton.addEventListener("click", () => {
+            messageclass.innerHTML = "";
             isCaptureMode = true;
             toggleRecording(startCaptureModeButton);
             startCommandModeButton.classList.remove('active');
