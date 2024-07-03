@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let messageclass = document.querySelector("message");
+    let messageclass = document.querySelector(".message");
     const startCommandModeButton = document.getElementById("start-command-mode");
     const startCaptureModeButton = document.getElementById("start-capture-mode");
     const transcriptionsContainer = document.getElementById("transcriptions");
